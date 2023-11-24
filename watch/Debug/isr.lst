@@ -1,0 +1,1613 @@
+STMicroelectronics list file postprocessor v1.01   (C)2009-2023   Sat Aug 12 20:15:58 2023
+Page 1  Assembler
+                                               c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\isr.asm
+
+   1                         stm8/     
+   0  000000                                 #include "STM8L051F3.inc"
+   1                         ; STM8L051F3.inc
+   2                         
+   3                         ; Copyright (c) 2003-2017 STMicroelectronics
+   4                         
+   5  000000 U                               #ifdef   __STM8L051F3__
+   8  000000                                 #define  __STM8L051F3__ 1
+   9                         
+  10                         ; STM8L051F3
+  11                         
+  12                         
+  13                         ; Port A
+  14                         ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                               ;;;;;;
+  15                         
+  16  000000                                 EXTERN   PA_ODR.w      ; Port A data output latch 
+                                                                ;register
+  17                         
+  18  000000                                 EXTERN   PA_IDR.w      ; Port A input pin value 
+                                                                ;register
+  19                         
+  20  000000                                 EXTERN   PA_DDR.w      ; Port A data direction 
+                                                                ;register
+  21                         
+  22  000000                                 EXTERN   PA_CR1.w      ; Port A control register 1
+  23                         
+  24  000000                                 EXTERN   PA_CR2.w      ; Port A control register 2
+  25                         
+  26                         ; Port B
+  27                         ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                               ;;;;;;
+  28                         
+  29  000000                                 EXTERN   PB_ODR.w      ; Port B data output latch 
+                                                                ;register
+  30                         
+  31  000000                                 EXTERN   PB_IDR.w      ; Port B input pin value 
+                                                                ;register
+  32                         
+  33  000000                                 EXTERN   PB_DDR.w      ; Port B data direction 
+                                                                ;register
+  34                         
+  35  000000                                 EXTERN   PB_CR1.w      ; Port B control register 1
+  36                         
+  37  000000                                 EXTERN   PB_CR2.w      ; Port B control register 2
+  38                         
+  39                         ; Port C
+  40                         ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                               ;;;;;;
+  41                         
+  42  000000                                 EXTERN   PC_ODR.w      ; Port C data output latch 
+                                                                ;register
+  43                         
+  44  000000                                 EXTERN   PC_IDR.w      ; Port C input pin value 
+                                                                ;register
+  45                         
+  46  000000                                 EXTERN   PC_DDR.w      ; Port C data direction 
+STMicroelectronics list file postprocessor v1.01   (C)2009-2023   Sat Aug 12 20:15:58 2023
+Page 2  Assembler
+                                               c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\isr.asm
+
+                                                                ;register
+  47                         
+  48  000000                                 EXTERN   PC_CR1.w      ; Port C control register 1
+  49                         
+  50  000000                                 EXTERN   PC_CR2.w      ; Port C control register 2
+  51                         
+  52                         ; Port D
+  53                         ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                               ;;;;;;
+  54                         
+  55  000000                                 EXTERN   PD_ODR.w      ; Port D data output latch 
+                                                                ;register
+  56                         
+  57  000000                                 EXTERN   PD_IDR.w      ; Port D input pin value 
+                                                                ;register
+  58                         
+  59  000000                                 EXTERN   PD_DDR.w      ; Port D data direction 
+                                                                ;register
+  60                         
+  61  000000                                 EXTERN   PD_CR1.w      ; Port D control register 1
+  62                         
+  63  000000                                 EXTERN   PD_CR2.w      ; Port D control register 2
+  64                         
+  65                         ; Flash
+  66                         ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                               ;;;;;;
+  67                         
+  68  000000                                 EXTERN   FLASH_CR1.w   ; Flash control register 1
+  69                         
+  70  000000                                 EXTERN   FLASH_CR2.w   ; Flash control register 2
+  71                         
+  72  000000                                 EXTERN   FLASH_PUKR.w  ; Flash Program memory 
+                                                                ;unprotection register
+  73                         
+  74  000000                                 EXTERN   FLASH_DUKR.w  ; Data EEPROM unprotection 
+                                                                ;register
+  75                         
+  76  000000                                 EXTERN   FLASH_IAPSR.w  ; Flash in-application 
+                                                                ;programming status register
+  77                         
+  78                         ; Direct memory access controller 1 (DMA1)
+  79                         ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                               ;;;;;;
+  80                         
+  81  000000                                 EXTERN   DMA1_GCSR.w   ; DMA1 global configuration & 
+                                                                ;status register
+  82                         
+  83  000000                                 EXTERN   DMA1_GIR1.w   ; DMA1 global interrupt register
+                                                                ; 1
+  84                         
+  85  000000                                 EXTERN   DMA1_C0CR.w   ; DMA1 channel 0 configuration 
+                                                                ;register
+  86                         
+  87  000000                                 EXTERN   DMA1_C0SPR.w  ; DMA1 channel 0 status & 
+                                                                ;priority register
+  88                         
+  89  000000                                 EXTERN   DMA1_C0NDTR.w  ; DMA1 number of data to 
+STMicroelectronics list file postprocessor v1.01   (C)2009-2023   Sat Aug 12 20:15:58 2023
+Page 3  Assembler
+                                               c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\isr.asm
+
+                                                                ;transfer register (channel 0)
+  90                         
+  91  000000                                 EXTERN   DMA1_C0PARH.w  ; DMA peripheral address high 
+                                                                ;register (channel 0)
+  92                         
+  93  000000                                 EXTERN   DMA1_C0PARL.w  ; DMA peripheral address low 
+                                                                ;register (channel 0)
+  94                         
+  95  000000                                 EXTERN   DMA1_C0M0ARH.w  ; DMA memory address high 
+                                                                ;register (channel 0)
+  96                         
+  97  000000                                 EXTERN   DMA1_C0M0ARL.w  ; DMA memory address low 
+                                                                ;register (channel 0)
+  98                         
+  99  000000                                 EXTERN   DMA1_C1CR.w   ; DMA1 channel 1 configuration 
+                                                                ;register
+ 100                         
+ 101  000000                                 EXTERN   DMA1_C1SPR.w  ; DMA1 channel 1 status & 
+                                                                ;priority register
+ 102                         
+ 103  000000                                 EXTERN   DMA1_C1NDTR.w  ; DMA1 number of data to 
+                                                                ;transfer register (channel 1)
+ 104                         
+ 105  000000                                 EXTERN   DMA1_C1PARH.w  ; DMA peripheral address high 
+                                                                ;register (channel 1)
+ 106                         
+ 107  000000                                 EXTERN   DMA1_C1PARL.w  ; DMA peripheral address low 
+                                                                ;register (channel 1)
+ 108                         
+ 109  000000                                 EXTERN   DMA1_C1M0ARH.w  ; DMA memory address high 
+                                                                ;register (channel 1)
+ 110                         
+ 111  000000                                 EXTERN   DMA1_C1M0ARL.w  ; DMA memory address low 
+                                                                ;register (channel 1)
+ 112                         
+ 113  000000                                 EXTERN   DMA1_C2CR.w   ; DMA1 channel 2 configuration 
+                                                                ;register
+ 114                         
+ 115  000000                                 EXTERN   DMA1_C2SPR.w  ; DMA1 channel 2 status & 
+                                                                ;priority register
+ 116                         
+ 117  000000                                 EXTERN   DMA1_C2NDTR.w  ; DMA1 number of data to 
+                                                                ;transfer register (channel 2)
+ 118                         
+ 119  000000                                 EXTERN   DMA1_C2PARH.w  ; DMA peripheral address high 
+                                                                ;register (channel 2)
+ 120                         
+ 121  000000                                 EXTERN   DMA1_C2PARL.w  ; DMA peripheral address low 
+                                                                ;register (channel 2)
+ 122                         
+ 123  000000                                 EXTERN   DMA1_C2M0ARH.w  ; DMA memory address high 
+                                                                ;register (channel 2)
+ 124                         
+ 125  000000                                 EXTERN   DMA1_C2M0ARL.w  ; DMA memory address low 
+                                                                ;register (channel 2)
+ 126                         
+ 127  000000                                 EXTERN   DMA1_C3CR.w   ; DMA1 channel 3 configuration 
+STMicroelectronics list file postprocessor v1.01   (C)2009-2023   Sat Aug 12 20:15:58 2023
+Page 4  Assembler
+                                               c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\isr.asm
+
+                                                                ;register
+ 128                         
+ 129  000000                                 EXTERN   DMA1_C3SPR.w  ; DMA1 channel 3 status & 
+                                                                ;priority register
+ 130                         
+ 131  000000                                 EXTERN   DMA1_C3NDTR.w  ; DMA1 number of data to 
+                                                                ;transfer register (channel 3)
+ 132                         
+ 133  000000                                 EXTERN   DMA1_C3PARH_C3M1ARH.w  ; DMA1 peripheral address high 
+                                                                ;register (channel 3)
+ 134                         
+ 135  000000                                 EXTERN   DMA1_C3PARL_C3M1ARL.w  ; DMA1 peripheral address low 
+                                                                ;register (channel 3)
+ 136                         
+ 137  000000                                 EXTERN   DMA_C3M0EAR.w  ; DMA channel 3 memory 0 
+                                                                ;extended address register
+ 138                         
+ 139  000000                                 EXTERN   DMA1_C3M0ARH.w  ; DMA memory address high 
+                                                                ;register (channel 3)
+ 140                         
+ 141  000000                                 EXTERN   DMA1_C3M0ARL.w  ; DMA memory address low 
+                                                                ;register (channel 3)
+ 142                         
+ 143                         ; System configuration (SYSCFG)
+ 144                         ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                               ;;;;;;
+ 145                         
+ 146  000000                                 EXTERN   SYSCFG_RMPCR3.w  ; Remapping register 3
+ 147                         
+ 148  000000                                 EXTERN   SYSCFG_RMPCR1.w  ; Remapping register 1
+ 149                         
+ 150  000000                                 EXTERN   SYSCFG_RMPCR2.w  ; Remapping register 2
+ 151                         
+ 152                         ; External Interrupt Control Register (ITC)
+ 153                         ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                               ;;;;;;
+ 154                         
+ 155  000000                                 EXTERN   EXTI_CR1.w    ; External interrupt control 
+                                                                ;register 1
+ 156                         
+ 157  000000                                 EXTERN   EXTI_CR2.w    ; External interrupt control 
+                                                                ;register 2
+ 158                         
+ 159  000000                                 EXTERN   EXTI_CR3.w    ; External interrupt control 
+                                                                ;register 3
+ 160                         
+ 161  000000                                 EXTERN   EXTI_SR1.w    ; External interrupt status 
+                                                                ;register 1
+ 162                         
+ 163  000000                                 EXTERN   EXTI_SR2.w    ; External interrupt status 
+                                                                ;register 2
+ 164                         
+ 165  000000                                 EXTERN   EXTI_CONF1.w  ; External interrupt port select
+                                                                ; register 1
+ 166                         
+ 167                         ; Wait For Event (WFE)
+ 168                         ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+STMicroelectronics list file postprocessor v1.01   (C)2009-2023   Sat Aug 12 20:15:58 2023
+Page 5  Assembler
+                                               c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\isr.asm
+
+                               ;;;;;;
+ 169                         
+ 170  000000                                 EXTERN   WFE_CR1.w     ; WFE control register 1
+ 171                         
+ 172  000000                                 EXTERN   WFE_CR2.w     ; WFE control register 2
+ 173                         
+ 174  000000                                 EXTERN   WFE_CR3.w     ; WFE control register 3
+ 175                         
+ 176  000000                                 EXTERN   WFE_CR4.w     ; WFE control register 4
+ 177                         
+ 178                         ; External Interrupt Control Register (ITC)
+ 179                         ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                               ;;;;;;
+ 180                         
+ 181  000000                                 EXTERN   EXTI_CR4.w    ; External interrupt control 
+                                                                ;register 4
+ 182                         
+ 183  000000                                 EXTERN   EXTI_CONF2.w  ; External interrupt port select
+                                                                ; register 2
+ 184                         
+ 185                         ; Reset (RST)
+ 186                         ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                               ;;;;;;
+ 187                         
+ 188  000000                                 EXTERN   RST_CR.w      ; Reset control register
+ 189                         
+ 190  000000                                 EXTERN   RST_SR.w      ; Reset status register
+ 191                         
+ 192                         ; Power control (PWR)
+ 193                         ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                               ;;;;;;
+ 194                         
+ 195  000000                                 EXTERN   PWR_CSR1.w    ; Power control and status 
+                                                                ;register 1
+ 196                         
+ 197  000000                                 EXTERN   PWR_CSR2.w    ; Power control and status 
+                                                                ;register 2
+ 198                         
+ 199                         ; Clock Control (CLK)
+ 200                         ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                               ;;;;;;
+ 201                         
+ 202  000000                                 EXTERN   CLK_CKDIVR.w  ; System clock divider register
+ 203                         
+ 204  000000                                 EXTERN   CLK_CRTCR.w   ; Clock RTC register
+ 205                         
+ 206  000000                                 EXTERN   CLK_ICKCR.w   ; Internal clock control 
+                                                                ;register
+ 207                         
+ 208  000000                                 EXTERN   CLK_PCKENR1.w  ; Peripheral clock gating 
+                                                                ;register 1
+ 209                         
+ 210  000000                                 EXTERN   CLK_PCKENR2.w  ; Peripheral clock gating 
+                                                                ;register 2
+ 211                         
+ 212  000000                                 EXTERN   CLK_CCOR.w    ; Configurable clock control 
+                                                                ;register
+STMicroelectronics list file postprocessor v1.01   (C)2009-2023   Sat Aug 12 20:15:58 2023
+Page 6  Assembler
+                                               c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\isr.asm
+
+ 213                         
+ 214  000000                                 EXTERN   CLK_ECKCR.w   ; External clock control 
+                                                                ;register
+ 215                         
+ 216  000000                                 EXTERN   CLK_SCSR.w    ; System clock status register
+ 217                         
+ 218  000000                                 EXTERN   CLK_SWR.w     ; System clock switch register
+ 219                         
+ 220  000000                                 EXTERN   CLK_SWCR.w    ; Clock switch control register
+ 221                         
+ 222  000000                                 EXTERN   CLK_CSSR.w    ; Clock security system 
+                                                                ;register
+ 223                         
+ 224  000000                                 EXTERN   CLK_CBEEPR.w  ; Clock BEEP register
+ 225                         
+ 226  000000                                 EXTERN   CLK_HSICALR.w  ; HSI calibration register
+ 227                         
+ 228  000000                                 EXTERN   CLK_HSITRIMR.w  ; HSI clock calibration trimming
+                                                                ; register
+ 229                         
+ 230  000000                                 EXTERN   CLK_HSIUNLCKR.w  ; HSI unlock register
+ 231                         
+ 232  000000                                 EXTERN   CLK_REGCSR.w  ; Main regulator control status 
+                                                                ;register
+ 233                         
+ 234  000000                                 EXTERN   CLK_PCKENR3.w  ; Peripheral clock gating 
+                                                                ;register 3
+ 235                         
+ 236                         ; Window Watchdog (WWDG)
+ 237                         ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                               ;;;;;;
+ 238                         
+ 239  000000                                 EXTERN   WWDG_CR.w     ; WWDG Control Register
+ 240                         
+ 241  000000                                 EXTERN   WWDG_WR.w     ; WWDR Window Register
+ 242                         
+ 243                         ; Independent Watchdog (IWDG)
+ 244                         ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                               ;;;;;;
+ 245                         
+ 246  000000                                 EXTERN   IWDG_KR.w     ; IWDG Key Register
+ 247                         
+ 248  000000                                 EXTERN   IWDG_PR.w     ; IWDG Prescaler Register
+ 249                         
+ 250  000000                                 EXTERN   IWDG_RLR.w    ; IWDG Reload Register
+ 251                         
+ 252                         ; Beeper (BEEP)
+ 253                         ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                               ;;;;;;
+ 254                         
+ 255  000000                                 EXTERN   BEEP_CSR1.w   ; BEEP Control/Status Register 
+                                                                ;1
+ 256                         
+ 257  000000                                 EXTERN   BEEP_CSR2.w   ; BEEP Control/Status Register 
+                                                                ;2
+ 258                         
+ 259                         ; Real-time clock (RTC)
+STMicroelectronics list file postprocessor v1.01   (C)2009-2023   Sat Aug 12 20:15:58 2023
+Page 7  Assembler
+                                               c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\isr.asm
+
+ 260                         ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                               ;;;;;;
+ 261                         
+ 262  000000                                 EXTERN   RTC_TR1.w     ; Time Register 1
+ 263                         
+ 264  000000                                 EXTERN   RTC_TR2.w     ; Time Register 2
+ 265                         
+ 266  000000                                 EXTERN   RTC_TR3.w     ; Time Register 3
+ 267                         
+ 268  000000                                 EXTERN   RTC_DR1.w     ; Date Register 1
+ 269                         
+ 270  000000                                 EXTERN   RTC_DR2.w     ; Date Register 2
+ 271                         
+ 272  000000                                 EXTERN   RTC_DR3.w     ; Date Register 3
+ 273                         
+ 274  000000                                 EXTERN   RTC_CR1.w     ; Control Register 1
+ 275                         
+ 276  000000                                 EXTERN   RTC_CR2.w     ; Control Register 2
+ 277                         
+ 278  000000                                 EXTERN   RTC_CR3.w     ; Control Register 3
+ 279                         
+ 280  000000                                 EXTERN   RTC_ISR1.w    ; Initialization and Status 
+                                                                ;Register 1
+ 281                         
+ 282  000000                                 EXTERN   RTC_ISR2.w    ; Initialization and Status 
+                                                                ;Register 2
+ 283                         
+ 284  000000                                 EXTERN   RTC_SPRERH.w  ; Synchronous Prescaler Register
+                                                                ; High
+ 285                         
+ 286  000000                                 EXTERN   RTC_SPRERL.w  ; Synchronous Prescaler Register
+                                                                ; Low
+ 287                         
+ 288  000000                                 EXTERN   RTC_APRER.w   ; Asynchronous Prescaler 
+                                                                ;Register
+ 289                         
+ 290  000000                                 EXTERN   RTC_WUTRH.w   ; Wakeup Timer Register High
+ 291                         
+ 292  000000                                 EXTERN   RTC_WUTRL.w   ; Wakeup Timer Register Low
+ 293                         
+ 294  000000                                 EXTERN   RTC_SSRH.w    ; Subsecond Register High
+ 295                         
+ 296  000000                                 EXTERN   RTC_SSRL.w    ; Subsecond Register Low
+ 297                         
+ 298  000000                                 EXTERN   RTC_WPR.w     ; Write Protection Register
+ 299                         
+ 300  000000                                 EXTERN   RTC_SHIFTRH.w  ; Shift Register High
+ 301                         
+ 302  000000                                 EXTERN   RTC_SHIFTRL.w  ; Shift Register Low
+ 303                         
+ 304  000000                                 EXTERN   RTC_ALRMAR1.w  ; Alarm A Register 1
+ 305                         
+ 306  000000                                 EXTERN   RTC_ALRMAR2.w  ; Alarm A Register 2
+ 307                         
+ 308  000000                                 EXTERN   RTC_ALRMAR3.w  ; Alarm A Register 3
+ 309                         
+ 310  000000                                 EXTERN   RTC_ALRMAR4.w  ; Alarm A Register 4
+STMicroelectronics list file postprocessor v1.01   (C)2009-2023   Sat Aug 12 20:15:58 2023
+Page 8  Assembler
+                                               c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\isr.asm
+
+ 311                         
+ 312  000000                                 EXTERN   RTC_ALRMASSRH.w  ; Shift Register High
+ 313                         
+ 314  000000                                 EXTERN   RTC_ALRMASSRL.w  ; Shift Register Low
+ 315                         
+ 316  000000                                 EXTERN   RTC_ALRMASSMSKR.w  ; Alarm A masking Register
+ 317                         
+ 318  000000                                 EXTERN   RTC_CALRH.w   ; Shift Register High
+ 319                         
+ 320  000000                                 EXTERN   RTC_CALRL.w   ; Shift Register Low
+ 321                         
+ 322  000000                                 EXTERN   RTC_TCR1.w    ; Tamper Control Register 1
+ 323                         
+ 324  000000                                 EXTERN   RTC_TCR2.w    ; Tamper Control Register 2
+ 325                         
+ 326                         ; Clock Security System (LSE_CSS)
+ 327                         ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                               ;;;;;;
+ 328                         
+ 329  000000                                 EXTERN   CSS_LSE_CSR.w  ; CSS on LSE Control and Status 
+                                                                ;Register
+ 330                         
+ 331                         ; Serial Peripheral Interface 1 (SPI1)
+ 332                         ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                               ;;;;;;
+ 333                         
+ 334  000000                                 EXTERN   SPI1_CR1.w    ; SPI1 Control Register 1
+ 335                         
+ 336  000000                                 EXTERN   SPI1_CR2.w    ; SPI1 Control Register 2
+ 337                         
+ 338  000000                                 EXTERN   SPI1_ICR.w    ; SPI1 Interrupt Control 
+                                                                ;Register
+ 339                         
+ 340  000000                                 EXTERN   SPI1_SR.w     ; SPI1 Status Register
+ 341                         
+ 342  000000                                 EXTERN   SPI1_DR.w     ; SPI1 Data Register
+ 343                         
+ 344  000000                                 EXTERN   SPI1_CRCPR.w  ; SPI1 CRC Polynomial Register
+ 345                         
+ 346  000000                                 EXTERN   SPI1_RXCRCR.w  ; SPI1 Rx CRC Register
+ 347                         
+ 348  000000                                 EXTERN   SPI1_TXCRCR.w  ; SPI1 Tx CRC Register
+ 349                         
+ 350                         ; I2C Bus Interface 1 (I2C1)
+ 351                         ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                               ;;;;;;
+ 352                         
+ 353  000000                                 EXTERN   I2C1_CR1.w    ; I2C1 control register 1
+ 354                         
+ 355  000000                                 EXTERN   I2C1_CR2.w    ; I2C1 control register 2
+ 356                         
+ 357  000000                                 EXTERN   I2C1_FREQR.w  ; I2C1 frequency register
+ 358                         
+ 359  000000                                 EXTERN   I2C1_OARL.w   ; I2C1 Own address register low
+ 360                         
+ 361  000000                                 EXTERN   I2C1_OARH.w   ; I2C1 Own address register 
+                                                                ;high
+STMicroelectronics list file postprocessor v1.01   (C)2009-2023   Sat Aug 12 20:15:58 2023
+Page 9  Assembler
+                                               c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\isr.asm
+
+ 362                         
+ 363  000000                                 EXTERN   I2C1_OAR2.w   ; I2C1 Own address register for 
+                                                                ;dual mode
+ 364                         
+ 365  000000                                 EXTERN   I2C1_DR.w     ; I2C1 data register
+ 366                         
+ 367  000000                                 EXTERN   I2C1_SR1.w    ; I2C1 status register 1
+ 368                         
+ 369  000000                                 EXTERN   I2C1_SR2.w    ; I2C1 status register 2
+ 370                         
+ 371  000000                                 EXTERN   I2C1_SR3.w    ; I2C1 status register 3
+ 372                         
+ 373  000000                                 EXTERN   I2C1_ITR.w    ; I2C1 interrupt control 
+                                                                ;register
+ 374                         
+ 375  000000                                 EXTERN   I2C1_CCRL.w   ; I2C1 Clock control register 
+                                                                ;low
+ 376                         
+ 377  000000                                 EXTERN   I2C1_CCRH.w   ; I2C1 Clock control register 
+                                                                ;high
+ 378                         
+ 379  000000                                 EXTERN   I2C1_TRISER.w  ; I2C1 TRISE register
+ 380                         
+ 381  000000                                 EXTERN   I2C1_PECR.w   ; I2C1 packet error checking 
+                                                                ;register
+ 382                         
+ 383                         ; Universal synch/asynch receiver transmitter 1 (USART1)
+ 384                         ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                               ;;;;;;
+ 385                         
+ 386  000000                                 EXTERN   USART1_SR.w   ; USART1 Status Register
+ 387                         
+ 388  000000                                 EXTERN   USART1_DR.w   ; USART1 Data Register
+ 389                         
+ 390  000000                                 EXTERN   USART1_BRR1.w  ; USART1 Baud Rate Register 1
+ 391                         
+ 392  000000                                 EXTERN   USART1_BRR2.w  ; USART1 Baud Rate Register 2
+ 393                         
+ 394  000000                                 EXTERN   USART1_CR1.w  ; USART1 Control Register 1
+ 395                         
+ 396  000000                                 EXTERN   USART1_CR2.w  ; USART1 Control Register 2
+ 397                         
+ 398  000000                                 EXTERN   USART1_CR3.w  ; USART1 Control Register 3
+ 399                         
+ 400  000000                                 EXTERN   USART1_CR4.w  ; USART1 Control Register 4
+ 401                         
+ 402  000000                                 EXTERN   USART1_CR5.w  ; USART1 Control Register 5
+ 403                         
+ 404  000000                                 EXTERN   USART1_GTR.w  ; USART1 Guard time Register
+ 405                         
+ 406  000000                                 EXTERN   USART1_PSCR.w  ; USART1 Prescaler Register
+ 407                         
+ 408                         ; 16-Bit Timer 2 (TIM2)
+ 409                         ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                               ;;;;;;
+ 410                         
+ 411  000000                                 EXTERN   TIM2_CR1.w    ; TIM2 Control register 1
+STMicroelectronics list file postprocessor v1.01   (C)2009-2023   Sat Aug 12 20:15:58 2023
+Page 10  Assembler
+                                               c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\isr.asm
+
+ 412                         
+ 413  000000                                 EXTERN   TIM2_CR2.w    ; TIM2 Control register 2
+ 414                         
+ 415  000000                                 EXTERN   TIM2_SMCR.w   ; TIM2 Slave Mode Control 
+                                                                ;register
+ 416                         
+ 417  000000                                 EXTERN   TIM2_ETR.w    ; TIM2 External trigger 
+                                                                ;register
+ 418                         
+ 419  000000                                 EXTERN   TIM2_DER.w    ; TIM2 DMA request enable 
+                                                                ;register
+ 420                         
+ 421  000000                                 EXTERN   TIM2_IER.w    ; TIM2 Interrupt enable 
+                                                                ;register
+ 422                         
+ 423  000000                                 EXTERN   TIM2_SR1.w    ; TIM2 Status register 1
+ 424                         
+ 425  000000                                 EXTERN   TIM2_SR2.w    ; TIM2 Status register 2
+ 426                         
+ 427  000000                                 EXTERN   TIM2_EGR.w    ; TIM2 Event Generation 
+                                                                ;register
+ 428                         
+ 429  000000                                 EXTERN   TIM2_CCMR1.w  ; TIM2 Capture/Compare mode 
+                                                                ;register 1
+ 430                         
+ 431  000000                                 EXTERN   TIM2_CCMR2.w  ; TIM2 Capture/Compare mode 
+                                                                ;register 2
+ 432                         
+ 433  000000                                 EXTERN   TIM2_CCER1.w  ; TIM2 Capture/Compare enable 
+                                                                ;register 1
+ 434                         
+ 435  000000                                 EXTERN   TIM2_CNTRH.w  ; TIM2 Counter High
+ 436                         
+ 437  000000                                 EXTERN   TIM2_CNTRL.w  ; TIM2 Counter Low
+ 438                         
+ 439  000000                                 EXTERN   TIM2_PSCR.w   ; TIM2 Prescaler register
+ 440                         
+ 441  000000                                 EXTERN   TIM2_ARRH.w   ; TIM2 Auto-Reload Register 
+                                                                ;High
+ 442                         
+ 443  000000                                 EXTERN   TIM2_ARRL.w   ; TIM2 Auto-Reload Register Low
+ 444                         
+ 445  000000                                 EXTERN   TIM2_CCR1H.w  ; TIM2 Capture/Compare Register 
+                                                                ;1 High
+ 446                         
+ 447  000000                                 EXTERN   TIM2_CCR1L.w  ; TIM2 Capture/Compare Register 
+                                                                ;1 Low
+ 448                         
+ 449  000000                                 EXTERN   TIM2_CCR2H.w  ; TIM2 Capture/Compare Register 
+                                                                ;2 High
+ 450                         
+ 451  000000                                 EXTERN   TIM2_CCR2L.w  ; TIM2 Capture/Compare Register 
+                                                                ;2 Low
+ 452                         
+ 453  000000                                 EXTERN   TIM2_BKR.w    ; TIM2 Break register
+ 454                         
+ 455  000000                                 EXTERN   TIM2_OISR.w   ; TIM2 Output idle state 
+STMicroelectronics list file postprocessor v1.01   (C)2009-2023   Sat Aug 12 20:15:58 2023
+Page 11  Assembler
+                                               c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\isr.asm
+
+                                                                ;register
+ 456                         
+ 457                         ; 16-Bit Timer 3 (TIM3)
+ 458                         ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                               ;;;;;;
+ 459                         
+ 460  000000                                 EXTERN   TIM3_CR1.w    ; TIM3 Control register 1
+ 461                         
+ 462  000000                                 EXTERN   TIM3_CR2.w    ; TIM3 Control register 2
+ 463                         
+ 464  000000                                 EXTERN   TIM3_SMCR.w   ; TIM3 Slave Mode Control 
+                                                                ;register
+ 465                         
+ 466  000000                                 EXTERN   TIM3_ETR.w    ; TIM3 External trigger 
+                                                                ;register
+ 467                         
+ 468  000000                                 EXTERN   TIM3_DER.w    ; TIM3 DMA request enable 
+                                                                ;register
+ 469                         
+ 470  000000                                 EXTERN   TIM3_IER.w    ; TIM3 Interrupt enable 
+                                                                ;register
+ 471                         
+ 472  000000                                 EXTERN   TIM3_SR1.w    ; TIM3 Status register 1
+ 473                         
+ 474  000000                                 EXTERN   TIM3_SR2.w    ; TIM3 Status register 2
+ 475                         
+ 476  000000                                 EXTERN   TIM3_EGR.w    ; TIM3 Event Generation 
+                                                                ;register
+ 477                         
+ 478  000000                                 EXTERN   TIM3_CCMR1.w  ; TIM3 Capture/Compare mode 
+                                                                ;register 1
+ 479                         
+ 480  000000                                 EXTERN   TIM3_CCMR2.w  ; TIM3 Capture/Compare mode 
+                                                                ;register 2
+ 481                         
+ 482  000000                                 EXTERN   TIM3_CCER1.w  ; TIM3 Capture/Compare enable 
+                                                                ;register 1
+ 483                         
+ 484  000000                                 EXTERN   TIM3_CNTRH.w  ; TIM3 Counter High
+ 485                         
+ 486  000000                                 EXTERN   TIM3_CNTRL.w  ; TIM3 Counter Low
+ 487                         
+ 488  000000                                 EXTERN   TIM3_PSCR.w   ; TIM3 Prescaler register
+ 489                         
+ 490  000000                                 EXTERN   TIM3_ARRH.w   ; TIM3 Auto-Reload Register 
+                                                                ;High
+ 491                         
+ 492  000000                                 EXTERN   TIM3_ARRL.w   ; TIM3 Auto-Reload Register Low
+ 493                         
+ 494  000000                                 EXTERN   TIM3_CCR1H.w  ; TIM3 Capture/Compare Register 
+                                                                ;1 High
+ 495                         
+ 496  000000                                 EXTERN   TIM3_CCR1L.w  ; TIM3 Capture/Compare Register 
+                                                                ;1 Low
+ 497                         
+ 498  000000                                 EXTERN   TIM3_CCR2H.w  ; TIM3 Capture/Compare Register 
+                                                                ;2 High
+STMicroelectronics list file postprocessor v1.01   (C)2009-2023   Sat Aug 12 20:15:58 2023
+Page 12  Assembler
+                                               c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\isr.asm
+
+ 499                         
+ 500  000000                                 EXTERN   TIM3_CCR2L.w  ; TIM3 Capture/Compare Register 
+                                                                ;2 Low
+ 501                         
+ 502  000000                                 EXTERN   TIM3_BKR.w    ; TIM3 Break register
+ 503                         
+ 504  000000                                 EXTERN   TIM3_OISR.w   ; TIM3 Output idle state 
+                                                                ;register
+ 505                         
+ 506                         ; 8-Bit  Timer 4 (TIM4)
+ 507                         ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                               ;;;;;;
+ 508                         
+ 509  000000                                 EXTERN   TIM4_CR1.w    ; TIM4 Control Register 1
+ 510                         
+ 511  000000                                 EXTERN   TIM4_CR2.w    ; TIM4 Control Register 2
+ 512                         
+ 513  000000                                 EXTERN   TIM4_SMCR.w   ; TIM4 Slave Mode Control 
+                                                                ;Register
+ 514                         
+ 515  000000                                 EXTERN   TIM4_DER.w    ; TIM4 DMA request Enable 
+                                                                ;Register
+ 516                         
+ 517  000000                                 EXTERN   TIM4_IER.w    ; TIM4 Interrupt Enable 
+                                                                ;Register
+ 518                         
+ 519  000000                                 EXTERN   TIM4_SR1.w    ; TIM4 Status Register 1
+ 520                         
+ 521  000000                                 EXTERN   TIM4_EGR.w    ; TIM4 Event Generation 
+                                                                ;Register
+ 522                         
+ 523  000000                                 EXTERN   TIM4_CNTR.w   ; TIM4 Counter
+ 524                         
+ 525  000000                                 EXTERN   TIM4_PSCR.w   ; TIM4 Prescaler Register
+ 526                         
+ 527  000000                                 EXTERN   TIM4_ARR.w    ; TIM4 Auto-Reload Register
+ 528                         
+ 529                         ; Infra Red Interface (IR)
+ 530                         ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                               ;;;;;;
+ 531                         
+ 532  000000                                 EXTERN   IR_CR.w       ; Infra-red control register
+ 533                         
+ 534                         ; Analog to digital converter 1 (ADC1)
+ 535                         ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                               ;;;;;;
+ 536                         
+ 537  000000                                 EXTERN   ADC1_CR1.w    ; ADC1 Configuration register 1
+ 538                         
+ 539  000000                                 EXTERN   ADC1_CR2.w    ; ADC1 Configuration register 2
+ 540                         
+ 541  000000                                 EXTERN   ADC1_CR3.w    ; ADC1 Configuration register 3
+ 542                         
+ 543  000000                                 EXTERN   ADC1_SR.w     ; ADC1 status register
+ 544                         
+ 545  000000                                 EXTERN   ADC1_DRH.w    ; ADC Data Register High
+ 546                         
+STMicroelectronics list file postprocessor v1.01   (C)2009-2023   Sat Aug 12 20:15:58 2023
+Page 13  Assembler
+                                               c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\isr.asm
+
+ 547  000000                                 EXTERN   ADC1_DRL.w    ; ADC Data Register Low
+ 548                         
+ 549  000000                                 EXTERN   ADC1_HTRH.w   ; ADC High Threshold Register 
+                                                                ;High
+ 550                         
+ 551  000000                                 EXTERN   ADC1_HTRL.w   ; ADC High Threshold Register 
+                                                                ;Low
+ 552                         
+ 553  000000                                 EXTERN   ADC1_LTRH.w   ; ADC Low Threshold Register 
+                                                                ;High
+ 554                         
+ 555  000000                                 EXTERN   ADC1_LTRL.w   ; ADC Low Threshold Register 
+                                                                ;Low
+ 556                         
+ 557  000000                                 EXTERN   ADC1_SQR1.w   ; ADC1 channel sequence 1 
+                                                                ;register
+ 558                         
+ 559  000000                                 EXTERN   ADC1_SQR2.w   ; ADC1 channel sequence 2 
+                                                                ;register
+ 560                         
+ 561  000000                                 EXTERN   ADC1_SQR3.w   ; ADC1 channel sequence 3 
+                                                                ;register
+ 562                         
+ 563  000000                                 EXTERN   ADC1_SQR4.w   ; ADC1 channel sequence 4 
+                                                                ;register
+ 564                         
+ 565  000000                                 EXTERN   ADC1_TRIGR1.w  ; ADC1 Trigger disable 1
+ 566                         
+ 567  000000                                 EXTERN   ADC1_TRIGR2.w  ; ADC1 Trigger disable 2
+ 568                         
+ 569  000000                                 EXTERN   ADC1_TRIGR3.w  ; ADC1 Trigger disable 3
+ 570                         
+ 571  000000                                 EXTERN   ADC1_TRIGR4.w  ; ADC1 Trigger disable 4
+ 572                         
+ 573                         ; Routing interface (RI)
+ 574                         ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                               ;;;;;;
+ 575                         
+ 576  000000                                 EXTERN   RI_ICR1.w     ; Timer input capture routing 
+                                                                ;register 1
+ 577                         
+ 578  000000                                 EXTERN   RI_ICR2.w     ; Timer input capture routing 
+                                                                ;register 2
+ 579                         
+ 580  000000                                 EXTERN   RI_IOIR1.w    ; I/O input register 1
+ 581                         
+ 582  000000                                 EXTERN   RI_IOIR2.w    ; I/O input register 2
+ 583                         
+ 584  000000                                 EXTERN   RI_IOIR3.w    ; I/O input register 3
+ 585                         
+ 586  000000                                 EXTERN   RI_IOCMR1.w   ; I/O control mode register 1
+ 587                         
+ 588  000000                                 EXTERN   RI_IOCMR2.w   ; I/O control mode register 2
+ 589                         
+ 590  000000                                 EXTERN   RI_IOCMR3.w   ; I/O control mode register 3
+ 591                         
+ 592  000000                                 EXTERN   RI_IOSR1.w    ; I/O switch register 1
+STMicroelectronics list file postprocessor v1.01   (C)2009-2023   Sat Aug 12 20:15:58 2023
+Page 14  Assembler
+                                               c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\isr.asm
+
+ 593                         
+ 594  000000                                 EXTERN   RI_IOSR2.w    ; I/O switch register 2
+ 595                         
+ 596  000000                                 EXTERN   RI_IOSR3.w    ; I/O switch register 3
+ 597                         
+ 598  000000                                 EXTERN   RI_IOGCR.w    ; I/O group control register
+ 599                         
+ 600  000000                                 EXTERN   RI_ASCR1.w    ; Analog switch register 1
+ 601                         
+ 602  000000                                 EXTERN   RI_ASCR2.w    ; Analog switch register 2
+ 603                         
+ 604  000000                                 EXTERN   RI_RCR.w      ; Resistor control register
+ 605                         
+ 606  000000                                 EXTERN   RI_CR.w       ; I/O control register
+ 607                         
+ 608  000000                                 EXTERN   RI_MASKR1.w   ; I/O mask register 1
+ 609                         
+ 610  000000                                 EXTERN   RI_MASKR2.w   ; I/O mask register 2
+ 611                         
+ 612  000000                                 EXTERN   RI_MASKR3.w   ; I/O mask register 3
+ 613                         
+ 614  000000                                 EXTERN   RI_MASKR4.w   ; I/O mask register 4
+ 615                         
+ 616  000000                                 EXTERN   RI_IOIR4.w    ; I/O input register 4
+ 617                         
+ 618  000000                                 EXTERN   RI_IOCMR4.w   ; I/O control mode register 4
+ 619                         
+ 620  000000                                 EXTERN   RI_IOSR4.w    ; I/O switch register 4
+ 621                         
+ 622                         ; Global configuration register (CFG)
+ 623                         ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                               ;;;;;;
+ 624                         
+ 625  000000                                 EXTERN   CFG_GCR.w     ; CFG Global configuration 
+                                                                ;register
+ 626                         
+ 627                         ; Interrupt Software Priority Registers (ITC)
+ 628                         ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                               ;;;;;;
+ 629                         
+ 630  000000                                 EXTERN   ITC_SPR1.w    ; Interrupt Software priority 
+                                                                ;register 1
+ 631                         
+ 632  000000                                 EXTERN   ITC_SPR2.w    ; Interrupt Software priority 
+                                                                ;register 2
+ 633                         
+ 634  000000                                 EXTERN   ITC_SPR3.w    ; Interrupt Software priority 
+                                                                ;register 3
+ 635                         
+ 636  000000                                 EXTERN   ITC_SPR4.w    ; Interrupt Software priority 
+                                                                ;register 4
+ 637                         
+ 638  000000                                 EXTERN   ITC_SPR5.w    ; Interrupt Software priority 
+                                                                ;register 5
+ 639                         
+ 640  000000                                 EXTERN   ITC_SPR6.w    ; Interrupt Software priority 
+                                                                ;register 6
+STMicroelectronics list file postprocessor v1.01   (C)2009-2023   Sat Aug 12 20:15:58 2023
+Page 15  Assembler
+                                               c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\isr.asm
+
+ 641                         
+ 642  000000                                 EXTERN   ITC_SPR7.w    ; Interrupt Software priority 
+                                                                ;register 7
+ 643                         
+ 644  000000                                 EXTERN   ITC_SPR8.w    ; Interrupt Software priority 
+                                                                ;register 8
+ 645                         
+ 646  000000                                 #endif                 ; __STM8L051F3__
+<END_OF_INCLUSION>
+   3  000000                                 extern   mode
+   4  000000                                 extern   timerflag
+   5  000000                                 extern   key1flag
+   6  000000                                 extern   key2flag
+   7  000000                                 extern   key3flag
+   8  000000                                 extern   key4flag
+   9  000000                                 extern   byte1
+  10  000000                                 extern   byte2
+  11  000000                                 extern   minutes
+  12  000000                                 extern   hours
+  13  000000                                 extern   monthweekd
+  14  000000                                 extern   date
+  15  000000                                 extern   year
+  16                                   
+  17  000000                                 extern   inc_mm
+  18  000000                                 extern   dec_mm
+  19  000000                                 extern   inc_hh
+  20  000000                                 extern   dec_hh
+  21  000000                                 extern   inc_mt
+  22  000000                                 extern   dec_mt
+  23  000000                                 extern   inc_dd
+  24  000000                                 extern   dec_dd
+  25  000000                                 extern   inc_wd
+  26  000000                                 extern   dec_wd
+  27  000000                                 extern   inc_yyyy
+  28  000000                                 extern   dec_yyyy
+  29  000000                                 extern   inc_amm
+  30  000000                                 extern   dec_amm
+  31  000000                                 extern   inc_ahh
+  32  000000                                 extern   dec_ahh
+  33                                   
+  34  000000                                 extern   show_first
+  35  000000                                 extern   show_last
+  36  000000                                 extern   show_wdstring
+  37                                   
+  38  000000                                 extern   restore_periph
+  39                                   
+  40  000000                                 extern   inc_clbr
+  41  000000                                 extern   dec_clbr
+  42  000000                                 extern   show_clbr_val
+  43                         
+  44                                   segment  'rom'
+  45  000000                       CEN       equ      0
+  46  000000                       UIF       equ      0
+  47  000002                       WUTWF     equ      2
+  48                         
+  49  000000                       PCKEN10   equ      0
+  50  000001                       PCKEN11   equ      1
+  51                         
+STMicroelectronics list file postprocessor v1.01   (C)2009-2023   Sat Aug 12 20:15:58 2023
+Page 16  Assembler
+                                               c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\isr.asm
+
+  52  008528                                 interrupt tim2_handler
+  53                         .tim2_handler.l:  
+  54  008528   72115256                      bres     TIM2_SR1, #UIF  ;сбрасываем фдаг прерывания
+  55  00852C   72100028                      bset     timerflag, #0
+  56  008530   80                            iret     
+  57                         
+  58  008531                                 interrupt key1_handler
+  59                         .key1_handler.l:  
+  60  008531   721050C3                      bset     CLK_PCKENR1, #PCKEN10
+  61  008535   721250C3                      bset     CLK_PCKENR1, #PCKEN11
+  62  008539   721250A3                      bset     EXTI_SR1, #1  ;сбрасываем флаг прерывания
+  63  00853D   720000240C                    btjt     key1flag, #0, key1_repeat
+  64  008542   CD8711                        call     debounce
+  65  008545   35010024                      mov      key1flag, #$1
+  66  008549   721250A3                      bset     EXTI_SR1, #1  ;сбрасываем флаг прерывания
+  67  00854D   80                            iret     
+  68                         
+  69                         key1_repeat:  
+  70  00854E   CD8722                        call     cfg_repeat
+  71  008551   7212500E                      bset     PC_CR2, #1
+  72                                   
+  73  008555   C60022                        ld       a, mode
+  74  008558   A10B                          cp       a, #11
+  75  00855A   271B                          jreq     mm_inc_rpt
+  76  00855C   A10D                          cp       a, #13
+  77  00855E   2726                          jreq     hh_inc_rpt
+  78  008560   A11F                          cp       a, #31
+  79  008562   2731                          jreq     mt_inc_rpt
+  80  008564   A121                          cp       a, #33
+  81  008566   273F                          jreq     dd_inc_rpt
+  82  008568   A129                          cp       a, #41
+  83  00856A   274A                          jreq     wd_inc_rpt
+  84  00856C   A133                          cp       a, #51
+  85  00856E   2750                          jreq     yyyy_inc_rpt
+  86  008570   A13D                          cp       a, #61
+  87  008572   2762                          jreq     amm_inc_rpt
+  88  008574   CC85E8                        jp       key1_repeat2
+  89                         
+  90                         mm_inc_rpt:  
+  91  008577   CD9167                        call     inc_mm
+  92  00857A   55001D000D                    mov      byte2, minutes
+  93  00857F   CD899F                        call     show_last
+  94  008582   CD8744                        call     strt_tmr
+  95  008585   80                            iret     
+  96                         
+  97                         hh_inc_rpt:  
+  98  008586   CD91D7                        call     inc_hh
+  99  008589   55001E000C                    mov      byte1, hours
+ 100  00858E   CD89CB                        call     show_first
+ 101  008591   CD8744                        call     strt_tmr
+ 102  008594   80                            iret     
+ 103                         
+ 104                         mt_inc_rpt:  
+ 105  008595   CD924A                        call     inc_mt
+ 106  008598   C60020                        ld       a, monthweekd
+ 107  00859B   A41F                          and      a, #%00011111
+ 108  00859D   C7000D                        ld       byte2, a
+STMicroelectronics list file postprocessor v1.01   (C)2009-2023   Sat Aug 12 20:15:58 2023
+Page 17  Assembler
+                                               c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\isr.asm
+
+ 109  0085A0   CD899F                        call     show_last
+ 110  0085A3   CD8744                        call     strt_tmr
+ 111  0085A6   80                            iret     
+ 112                         
+ 113                         dd_inc_rpt:  
+ 114  0085A7   CD92D3                        call     inc_dd
+ 115  0085AA   55001F000C                    mov      byte1, date
+ 116  0085AF   CD89CB                        call     show_first
+ 117  0085B2   CD8744                        call     strt_tmr
+ 118  0085B5   80                            iret     
+ 119                                   
+ 120                         wd_inc_rpt  
+ 121  0085B6   CD9353                        call     inc_wd
+ 122  0085B9   CD89F7                        call     show_wdstring
+ 123  0085BC   CD8744                        call     strt_tmr
+ 124  0085BF   80                            iret     
+ 125                                   
+ 126                         yyyy_inc_rpt  
+ 127  0085C0   CD93D5                        call     inc_yyyy
+ 128  0085C3   3520000C                      mov      byte1, #%00100000
+ 129  0085C7   CD89CB                        call     show_first
+ 130  0085CA   550021000D                    mov      byte2, year
+ 131  0085CF   CD899F                        call     show_last
+ 132  0085D2   CD8744                        call     strt_tmr
+ 133  0085D5   80                            iret     
+ 134                         
+ 135                         amm_inc_rpt:  
+ 136  0085D6   CD943B                        call     inc_amm
+ 137  0085D9   C6515D                        ld       a, RTC_ALRMAR2
+ 138  0085DC   A47F                          and      a, #%01111111
+ 139  0085DE   C7000D                        ld       byte2, a
+ 140  0085E1   CD899F                        call     show_last
+ 141  0085E4   CD8744                        call     strt_tmr
+ 142  0085E7   80                            iret     
+ 143                         
+ 144                         key1_repeat2:  
+ 145  0085E8   A13F                          cp       a, #63
+ 146  0085EA   2705                          jreq     ahh_inc_rpt
+ 147  0085EC   A151                          cp       a, #81
+ 148  0085EE   2713                          jreq     clbr_inc_rpt
+ 149  0085F0   80                            iret     
+ 150                                   
+ 151                         ahh_inc_rpt:  
+ 152  0085F1   CD94B7                        call     inc_ahh
+ 153  0085F4   C6515E                        ld       a, RTC_ALRMAR3
+ 154  0085F7   A43F                          and      a, #%00111111
+ 155  0085F9   C7000C                        ld       byte1, a
+ 156  0085FC   CD89CB                        call     show_first
+ 157  0085FF   CD8744                        call     strt_tmr
+ 158  008602   80                            iret     
+ 159                         
+ 160                         clbr_inc_rpt:  
+ 161  008603   CD9572                        call     inc_clbr
+ 162  008606   CD88D8                        call     show_clbr_val
+ 163  008609   CD8744                        call     strt_tmr
+ 164  00860C   80                            iret     
+ 165                                   
+STMicroelectronics list file postprocessor v1.01   (C)2009-2023   Sat Aug 12 20:15:58 2023
+Page 18  Assembler
+                                               c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\isr.asm
+
+ 166  00860D                                 interrupt key2_handler
+ 167                         .key2_handler.l:  
+ 168  00860D   721050C3                      bset     CLK_PCKENR1, #PCKEN10
+ 169  008611   721250C3                      bset     CLK_PCKENR1, #PCKEN11
+ 170  008615   721E50A3                      bset     EXTI_SR1, #7
+ 171  008619   720000250C                    btjt     key2flag, #0, key2_repeat
+ 172  00861E   CD8711                        call     debounce
+ 173  008621   35010025                      mov      key2flag, #$1
+ 174  008625   721250A3                      bset     EXTI_SR1, #1  ;сбрасываем флаг прерывания
+ 175  008629   80                            iret     
+ 176                                   
+ 177                         key2_repeat:  
+ 178  00862A   CD8722                        call     cfg_repeat
+ 179  00862D   721E5009                      bset     PB_CR2, #7
+ 180                                   
+ 181  008631   C60022                        ld       a, mode
+ 182  008634   A10B                          cp       a, #11
+ 183  008636   271F                          jreq     mm_dec_rpt
+ 184  008638   A10D                          cp       a, #13
+ 185  00863A   272A                          jreq     hh_dec_rpt
+ 186  00863C   A11F                          cp       a, #31
+ 187  00863E   2735                          jreq     mt_dec_rpt
+ 188  008640   A121                          cp       a, #33
+ 189  008642   2743                          jreq     dd_dec_rpt
+ 190  008644   A129                          cp       a, #41
+ 191  008646   274E                          jreq     wd_dec_rpt
+ 192  008648   A133                          cp       a, #51
+ 193  00864A   2754                          jreq     yyyy_dec_rpt
+ 194  00864C   A13D                          cp       a, #61
+ 195  00864E   2766                          jreq     amm_dec_rpt
+ 196  008650   A13F                          cp       a, #63
+ 197  008652   2774                          jreq     ahh_dec_rpt
+ 198  008654   CC86DA                        jp       key2_repeat2
+ 199                         
+ 200                         mm_dec_rpt:  
+ 201  008657   CD919B                        call     dec_mm
+ 202  00865A   55001D000D                    mov      byte2, minutes
+ 203  00865F   CD899F                        call     show_last
+ 204  008662   CD8744                        call     strt_tmr
+ 205  008665   80                            iret     
+ 206                         
+ 207                         hh_dec_rpt:  
+ 208  008666   CD920E                        call     dec_hh
+ 209  008669   55001E000C                    mov      byte1, hours
+ 210  00866E   CD89CB                        call     show_first
+ 211  008671   CD8744                        call     strt_tmr
+ 212  008674   80                            iret     
+ 213                                   
+ 214                         mt_dec_rpt:  
+ 215  008675   CD928A                        call     dec_mt
+ 216  008678   C60020                        ld       a, monthweekd
+ 217  00867B   A41F                          and      a, #%00011111
+ 218  00867D   C7000D                        ld       byte2, a
+ 219  008680   CD899F                        call     show_last
+ 220  008683   CD8744                        call     strt_tmr
+ 221  008686   80                            iret     
+ 222                                   
+STMicroelectronics list file postprocessor v1.01   (C)2009-2023   Sat Aug 12 20:15:58 2023
+Page 19  Assembler
+                                               c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\isr.asm
+
+ 223                         dd_dec_rpt:  
+ 224  008687   CD9312                        call     dec_dd
+ 225  00868A   55001F000C                    mov      byte1, date
+ 226  00868F   CD89CB                        call     show_first
+ 227  008692   CD8744                        call     strt_tmr
+ 228  008695   80                            iret     
+ 229                         
+ 230                         wd_dec_rpt:  
+ 231  008696   CD9394                        call     dec_wd
+ 232  008699   CD89F7                        call     show_wdstring
+ 233  00869C   CD8744                        call     strt_tmr
+ 234  00869F   80                            iret     
+ 235                                   
+ 236                         yyyy_dec_rpt:  
+ 237  0086A0   CD9404                        call     dec_yyyy
+ 238  0086A3   3520000C                      mov      byte1, #%00100000
+ 239  0086A7   CD89CB                        call     show_first
+ 240  0086AA   550021000D                    mov      byte2, year
+ 241  0086AF   CD899F                        call     show_last
+ 242  0086B2   CD8744                        call     strt_tmr
+ 243  0086B5   80                            iret     
+ 244                                   
+ 245                         amm_dec_rpt:  
+ 246  0086B6   CD9474                        call     dec_amm
+ 247  0086B9   C6515D                        ld       a, RTC_ALRMAR2
+ 248  0086BC   A47F                          and      a, #%01111111
+ 249  0086BE   C7000D                        ld       byte2, a
+ 250  0086C1   CD899F                        call     show_last
+ 251  0086C4   CD8744                        call     strt_tmr
+ 252  0086C7   80                            iret     
+ 253                                   
+ 254                         ahh_dec_rpt:  
+ 255  0086C8   CD94F0                        call     dec_ahh
+ 256  0086CB   C6515E                        ld       a, RTC_ALRMAR3
+ 257  0086CE   A43F                          and      a, #%00111111
+ 258  0086D0   C7000C                        ld       byte1, a
+ 259  0086D3   CD89CB                        call     show_first
+ 260  0086D6   CD8744                        call     strt_tmr
+ 261  0086D9   80                            iret     
+ 262                         
+ 263                         key2_repeat2:  
+ 264  0086DA   A151                          cp       a, #81
+ 265  0086DC   2701                          jreq     clbr_dec_rpt
+ 266  0086DE   80                            iret     
+ 267                                   
+ 268                         clbr_dec_rpt:  
+ 269  0086DF   CD95DC                        call     dec_clbr
+ 270  0086E2   CD88D8                        call     show_clbr_val
+ 271  0086E5   CD8744                        call     strt_tmr
+ 272  0086E8   80                            iret     
+ 273                         
+ 274  0086E9                                 interrupt key3_handler
+ 275                         .key3_handler.l:  
+ 276  0086E9   721050C3                      bset     CLK_PCKENR1, #PCKEN10
+ 277  0086ED   721250C3                      bset     CLK_PCKENR1, #PCKEN11
+ 278  0086F1   721850A3                      bset     EXTI_SR1, #4
+ 279  0086F5   CD8711                        call     debounce
+STMicroelectronics list file postprocessor v1.01   (C)2009-2023   Sat Aug 12 20:15:58 2023
+Page 20  Assembler
+                                               c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\isr.asm
+
+ 280  0086F8   35010026                      mov      key3flag, #$1
+ 281  0086FC   80                            iret     
+ 282                                   
+ 283  0086FD                                 interrupt key4_handler
+ 284                         .key4_handler.l:  
+ 285  0086FD   721050C3                      bset     CLK_PCKENR1, #PCKEN10
+ 286  008701   721250C3                      bset     CLK_PCKENR1, #PCKEN11
+ 287  008705   721050A3                      bset     EXTI_SR1, #0
+ 288  008709   CD8711                        call     debounce
+ 289  00870C   35010027                      mov      key4flag, #$1
+ 290  008710   80                            iret     
+ 291                         
+ 292                         debounce:  
+ 293  008711   CD8733                        call     cfg_debounce
+ 294  008714   72105280                      bset     TIM3_CR1, #CEN  ;запускаем таймер
+ 295                         dbn_wait_CEN  
+ 296  008718   72005280FB                    btjt     TIM3_CR1, #0, dbn_wait_CEN
+ 297  00871D   72115286                      bres     TIM3_SR1, #UIF
+ 298  008721   81                            ret      
+ 299                                   
+ 300                         cfg_repeat:  
+ 301  008722   3519528F                      mov      TIM3_ARRH, #$19  ;200 мс
+ 302  008726   35995290                      mov      TIM3_ARRL, #$99
+ 303  00872A   3500528C                      mov      TIM3_CNTRH, #$00
+ 304  00872E   3500528D                      mov      TIM3_CNTRL, #$00
+ 305  008732   81                            ret      
+ 306                                   
+ 307                         cfg_debounce:  
+ 308  008733   3520528F                      mov      TIM3_ARRH, #$20  ;загружаем значение задержки в 
+                                                                ;таймер
+ 309  008737   35005290                      mov      TIM3_ARRL, #$00  ;250 мс
+ 310  00873B   3500528C                      mov      TIM3_CNTRH, #$00  ;обнуляем значение счетчика
+ 311  00873F   3500528D                      mov      TIM3_CNTRL, #$00
+ 312  008743   81                            ret      
+ 313                                   
+ 314                         strt_tmr:  
+ 315  008744   72105280                      bset     TIM3_CR1, #CEN  ;запускаем таймер
+ 316                         rpt_wait_CEN  
+ 317  008748   72005280FB                    btjt     TIM3_CR1, #0, rpt_wait_CEN
+ 318  00874D   72115286                      bres     TIM3_SR1, #UIF
+ 319  008751   81                            ret      
+ 320                                   
+ 321  008752                                 end      
+STMicroelectronics list file postprocessor v1.01   (C)2009-2023   Sat Aug 12 20:15:58 2023
+Page 21  Assembler
+                                               c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\isr.asm
+
+Symbol Name                       Value     Call       Type  Scope      Rel.  Line  Privacy  Segment   Size  Bytes File
+
+ADC1_CR1                              5340         no  WORD  Internal   ABS    537  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+ADC1_CR2                              5341         no  WORD  Internal   ABS    539  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+ADC1_CR3                              5342         no  WORD  Internal   ABS    541  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+ADC1_SR                               5343         no  WORD  Internal   ABS    543  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+ADC1_DRH                              5344         no  WORD  Internal   ABS    545  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+ADC1_DRL                              5345         no  WORD  Internal   ABS    547  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+ADC1_HTRH                             5346         no  WORD  Internal   ABS    549  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+ADC1_HTRL                             5347         no  WORD  Internal   ABS    551  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+ADC1_LTRH                             5348         no  WORD  Internal   ABS    553  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+ADC1_LTRL                             5349         no  WORD  Internal   ABS    555  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+ADC1_SQR1                             534A         no  WORD  Internal   ABS    557  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+ADC1_SQR2                             534B         no  WORD  Internal   ABS    559  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+ADC1_SQR3                             534C         no  WORD  Internal   ABS    561  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+ADC1_SQR4                             534D         no  WORD  Internal   ABS    563  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+ADC1_TRIGR1                           534E         no  WORD  Internal   ABS    565  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+ADC1_TRIGR2                           534F         no  WORD  Internal   ABS    567  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+ADC1_TRIGR3                           5350         no  WORD  Internal   ABS    569  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+ADC1_TRIGR4                           5351         no  WORD  Internal   ABS    571  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+
+BEEP_CSR1                             50F0         no  WORD  Internal   ABS    255  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+BEEP_CSR2                             50F3         no  WORD  Internal   ABS    257  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+
+CLK_CKDIVR                            50C0         no  WORD  Internal   ABS    202  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+CLK_CRTCR                             50C1         no  WORD  Internal   ABS    204  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+CLK_ICKCR                             50C2         no  WORD  Internal   ABS    206  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+CLK_PCKENR1                           50C3         no  WORD  Internal   ABS    208  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+CLK_PCKENR2                           50C4         no  WORD  Internal   ABS    210  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+CLK_CCOR                              50C5         no  WORD  Internal   ABS    212  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+CLK_ECKCR                             50C6         no  WORD  Internal   ABS    214  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+CLK_SCSR                              50C7         no  WORD  Internal   ABS    216  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+CLK_SWR                               50C8         no  WORD  Internal   ABS    218  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+CLK_SWCR                              50C9         no  WORD  Internal   ABS    220  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+CLK_CSSR                              50CA         no  WORD  Internal   ABS    222  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+CLK_CBEEPR                            50CB         no  WORD  Internal   ABS    224  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+CLK_HSICALR                           50CC         no  WORD  Internal   ABS    226  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+CLK_HSITRIMR                          50CD         no  WORD  Internal   ABS    228  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+CLK_HSIUNLCKR                         50CE         no  WORD  Internal   ABS    230  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+CLK_REGCSR                            50CF         no  WORD  Internal   ABS    232  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+CLK_PCKENR3                           50D0         no  WORD  Internal   ABS    234  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+CSS_LSE_CSR                           5190         no  WORD  Internal   ABS    329  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+CFG_GCR                               7F60         no  WORD  Internal   ABS    625  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+CEN                                   0000         no  WORD  Internal   ABS     45  private  text         0     0  -
+
+DMA1_GCSR                             5070         no  WORD  Internal   ABS     81  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+DMA1_GIR1                             5071         no  WORD  Internal   ABS     83  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+DMA1_C0CR                             5075         no  WORD  Internal   ABS     85  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+DMA1_C0SPR                            5076         no  WORD  Internal   ABS     87  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+DMA1_C0NDTR                           5077         no  WORD  Internal   ABS     89  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+DMA1_C0PARH                           5078         no  WORD  Internal   ABS     91  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+DMA1_C0PARL                           5079         no  WORD  Internal   ABS     93  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+DMA1_C0M0ARH                          507B         no  WORD  Internal   ABS     95  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+DMA1_C0M0ARL                          507C         no  WORD  Internal   ABS     97  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+DMA1_C1CR                             507F         no  WORD  Internal   ABS     99  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+DMA1_C1SPR                            5080         no  WORD  Internal   ABS    101  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+DMA1_C1NDTR                           5081         no  WORD  Internal   ABS    103  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+STMicroelectronics list file postprocessor v1.01   (C)2009-2023   Sat Aug 12 20:15:58 2023
+Page 22  Assembler
+                                               c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\isr.asm
+
+DMA1_C1PARH                           5082         no  WORD  Internal   ABS    105  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+DMA1_C1PARL                           5083         no  WORD  Internal   ABS    107  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+DMA1_C1M0ARH                          5085         no  WORD  Internal   ABS    109  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+DMA1_C1M0ARL                          5086         no  WORD  Internal   ABS    111  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+DMA1_C2CR                             5089         no  WORD  Internal   ABS    113  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+DMA1_C2SPR                            508A         no  WORD  Internal   ABS    115  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+DMA1_C2NDTR                           508B         no  WORD  Internal   ABS    117  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+DMA1_C2PARH                           508C         no  WORD  Internal   ABS    119  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+DMA1_C2PARL                           508D         no  WORD  Internal   ABS    121  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+DMA1_C2M0ARH                          508F         no  WORD  Internal   ABS    123  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+DMA1_C2M0ARL                          5090         no  WORD  Internal   ABS    125  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+DMA1_C3CR                             5093         no  WORD  Internal   ABS    127  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+DMA1_C3SPR                            5094         no  WORD  Internal   ABS    129  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+DMA1_C3NDTR                           5095         no  WORD  Internal   ABS    131  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+DMA1_C3PARH_C3M1ARH                   5096         no  WORD  Internal   ABS    133  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+DMA1_C3PARL_C3M1ARL                   5097         no  WORD  Internal   ABS    135  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+DMA_C3M0EAR                           5098         no  WORD  Internal   ABS    137  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+DMA1_C3M0ARH                          5099         no  WORD  Internal   ABS    139  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+DMA1_C3M0ARL                          509A         no  WORD  Internal   ABS    141  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+
+EXTI_CR1                              50A0         no  WORD  Internal   ABS    155  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+EXTI_CR2                              50A1         no  WORD  Internal   ABS    157  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+EXTI_CR3                              50A2         no  WORD  Internal   ABS    159  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+EXTI_SR1                              50A3         no  WORD  Internal   ABS    161  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+EXTI_SR2                              50A4         no  WORD  Internal   ABS    163  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+EXTI_CONF1                            50A5         no  WORD  Internal   ABS    165  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+EXTI_CR4                              50AA         no  WORD  Internal   ABS    181  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+EXTI_CONF2                            50AB         no  WORD  Internal   ABS    183  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+
+FLASH_CR1                             5050         no  WORD  Internal   ABS     68  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+FLASH_CR2                             5051         no  WORD  Internal   ABS     70  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+FLASH_PUKR                            5052         no  WORD  Internal   ABS     72  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+FLASH_DUKR                            5053         no  WORD  Internal   ABS     74  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+FLASH_IAPSR                           5054         no  WORD  Internal   ABS     76  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+
+IWDG_KR                               50E0         no  WORD  Internal   ABS    246  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+IWDG_PR                               50E1         no  WORD  Internal   ABS    248  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+IWDG_RLR                              50E2         no  WORD  Internal   ABS    250  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+I2C1_CR1                              5210         no  WORD  Internal   ABS    353  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+I2C1_CR2                              5211         no  WORD  Internal   ABS    355  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+I2C1_FREQR                            5212         no  WORD  Internal   ABS    357  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+I2C1_OARL                             5213         no  WORD  Internal   ABS    359  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+I2C1_OARH                             5214         no  WORD  Internal   ABS    361  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+I2C1_OAR2                             5215         no  WORD  Internal   ABS    363  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+I2C1_DR                               5216         no  WORD  Internal   ABS    365  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+I2C1_SR1                              5217         no  WORD  Internal   ABS    367  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+I2C1_SR2                              5218         no  WORD  Internal   ABS    369  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+I2C1_SR3                              5219         no  WORD  Internal   ABS    371  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+I2C1_ITR                              521A         no  WORD  Internal   ABS    373  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+I2C1_CCRL                             521B         no  WORD  Internal   ABS    375  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+I2C1_CCRH                             521C         no  WORD  Internal   ABS    377  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+I2C1_TRISER                           521D         no  WORD  Internal   ABS    379  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+I2C1_PECR                             521E         no  WORD  Internal   ABS    381  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+IR_CR                                 52FF         no  WORD  Internal   ABS    532  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+ITC_SPR1                              7F70         no  WORD  Internal   ABS    630  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+ITC_SPR2                              7F71         no  WORD  Internal   ABS    632  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+ITC_SPR3                              7F72         no  WORD  Internal   ABS    634  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+STMicroelectronics list file postprocessor v1.01   (C)2009-2023   Sat Aug 12 20:15:58 2023
+Page 23  Assembler
+                                               c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\isr.asm
+
+ITC_SPR4                              7F73         no  WORD  Internal   ABS    636  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+ITC_SPR5                              7F74         no  WORD  Internal   ABS    638  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+ITC_SPR6                              7F75         no  WORD  Internal   ABS    640  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+ITC_SPR7                              7F76         no  WORD  Internal   ABS    642  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+ITC_SPR8                              7F77         no  WORD  Internal   ABS    644  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+
+PA_ODR                                5000         no  WORD  Internal   ABS     16  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+PA_IDR                                5001         no  WORD  Internal   ABS     18  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+PA_DDR                                5002         no  WORD  Internal   ABS     20  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+PA_CR1                                5003         no  WORD  Internal   ABS     22  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+PA_CR2                                5004         no  WORD  Internal   ABS     24  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+PB_ODR                                5005         no  WORD  Internal   ABS     29  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+PB_IDR                                5006         no  WORD  Internal   ABS     31  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+PB_DDR                                5007         no  WORD  Internal   ABS     33  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+PB_CR1                                5008         no  WORD  Internal   ABS     35  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+PB_CR2                                5009         no  WORD  Internal   ABS     37  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+PC_ODR                                500A         no  WORD  Internal   ABS     42  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+PC_IDR                                500B         no  WORD  Internal   ABS     44  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+PC_DDR                                500C         no  WORD  Internal   ABS     46  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+PC_CR1                                500D         no  WORD  Internal   ABS     48  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+PC_CR2                                500E         no  WORD  Internal   ABS     50  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+PD_ODR                                500F         no  WORD  Internal   ABS     55  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+PD_IDR                                5010         no  WORD  Internal   ABS     57  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+PD_DDR                                5011         no  WORD  Internal   ABS     59  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+PD_CR1                                5012         no  WORD  Internal   ABS     61  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+PD_CR2                                5013         no  WORD  Internal   ABS     63  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+PWR_CSR1                              50B2         no  WORD  Internal   ABS    195  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+PWR_CSR2                              50B3         no  WORD  Internal   ABS    197  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+PCKEN10                               0000         no  WORD  Internal   ABS     49  private  text         0     0  -
+PCKEN11                               0001         no  WORD  Internal   ABS     50  private  text         0     0  -
+
+RST_CR                                50B0         no  WORD  Internal   ABS    188  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+RST_SR                                50B1         no  WORD  Internal   ABS    190  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+RTC_TR1                               5140         no  WORD  Internal   ABS    262  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+RTC_TR2                               5141         no  WORD  Internal   ABS    264  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+RTC_TR3                               5142         no  WORD  Internal   ABS    266  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+RTC_DR1                               5144         no  WORD  Internal   ABS    268  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+RTC_DR2                               5145         no  WORD  Internal   ABS    270  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+RTC_DR3                               5146         no  WORD  Internal   ABS    272  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+RTC_CR1                               5148         no  WORD  Internal   ABS    274  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+RTC_CR2                               5149         no  WORD  Internal   ABS    276  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+RTC_CR3                               514A         no  WORD  Internal   ABS    278  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+RTC_ISR1                              514C         no  WORD  Internal   ABS    280  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+RTC_ISR2                              514D         no  WORD  Internal   ABS    282  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+RTC_SPRERH                            5150         no  WORD  Internal   ABS    284  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+RTC_SPRERL                            5151         no  WORD  Internal   ABS    286  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+RTC_APRER                             5152         no  WORD  Internal   ABS    288  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+RTC_WUTRH                             5154         no  WORD  Internal   ABS    290  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+RTC_WUTRL                             5155         no  WORD  Internal   ABS    292  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+RTC_SSRH                              5157         no  WORD  Internal   ABS    294  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+RTC_SSRL                              5158         no  WORD  Internal   ABS    296  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+RTC_WPR                               5159         no  WORD  Internal   ABS    298  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+RTC_SHIFTRH                           515A         no  WORD  Internal   ABS    300  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+RTC_SHIFTRL                           515B         no  WORD  Internal   ABS    302  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+RTC_ALRMAR1                           515C         no  WORD  Internal   ABS    304  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+RTC_ALRMAR2                           515D         no  WORD  Internal   ABS    306  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+RTC_ALRMAR3                           515E         no  WORD  Internal   ABS    308  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+STMicroelectronics list file postprocessor v1.01   (C)2009-2023   Sat Aug 12 20:15:58 2023
+Page 24  Assembler
+                                               c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\isr.asm
+
+RTC_ALRMAR4                           515F         no  WORD  Internal   ABS    310  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+RTC_ALRMASSRH                         5164         no  WORD  Internal   ABS    312  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+RTC_ALRMASSRL                         5165         no  WORD  Internal   ABS    314  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+RTC_ALRMASSMSKR                       5166         no  WORD  Internal   ABS    316  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+RTC_CALRH                             516A         no  WORD  Internal   ABS    318  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+RTC_CALRL                             516B         no  WORD  Internal   ABS    320  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+RTC_TCR1                              516C         no  WORD  Internal   ABS    322  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+RTC_TCR2                              516D         no  WORD  Internal   ABS    324  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+RI_ICR1                               5431         no  WORD  Internal   ABS    576  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+RI_ICR2                               5432         no  WORD  Internal   ABS    578  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+RI_IOIR1                              5433         no  WORD  Internal   ABS    580  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+RI_IOIR2                              5434         no  WORD  Internal   ABS    582  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+RI_IOIR3                              5435         no  WORD  Internal   ABS    584  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+RI_IOCMR1                             5436         no  WORD  Internal   ABS    586  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+RI_IOCMR2                             5437         no  WORD  Internal   ABS    588  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+RI_IOCMR3                             5438         no  WORD  Internal   ABS    590  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+RI_IOSR1                              5439         no  WORD  Internal   ABS    592  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+RI_IOSR2                              543A         no  WORD  Internal   ABS    594  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+RI_IOSR3                              543B         no  WORD  Internal   ABS    596  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+RI_IOGCR                              543C         no  WORD  Internal   ABS    598  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+RI_ASCR1                              543D         no  WORD  Internal   ABS    600  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+RI_ASCR2                              543E         no  WORD  Internal   ABS    602  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+RI_RCR                                543F         no  WORD  Internal   ABS    604  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+RI_CR                                 5450         no  WORD  Internal   ABS    606  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+RI_MASKR1                             5451         no  WORD  Internal   ABS    608  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+RI_MASKR2                             5452         no  WORD  Internal   ABS    610  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+RI_MASKR3                             5453         no  WORD  Internal   ABS    612  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+RI_MASKR4                             5454         no  WORD  Internal   ABS    614  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+RI_IOIR4                              5455         no  WORD  Internal   ABS    616  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+RI_IOCMR4                             5456         no  WORD  Internal   ABS    618  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+RI_IOSR4                              5457         no  WORD  Internal   ABS    620  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+
+SYSCFG_RMPCR3                         509D         no  WORD  Internal   ABS    146  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+SYSCFG_RMPCR1                         509E         no  WORD  Internal   ABS    148  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+SYSCFG_RMPCR2                         509F         no  WORD  Internal   ABS    150  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+SPI1_CR1                              5200         no  WORD  Internal   ABS    334  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+SPI1_CR2                              5201         no  WORD  Internal   ABS    336  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+SPI1_ICR                              5202         no  WORD  Internal   ABS    338  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+SPI1_SR                               5203         no  WORD  Internal   ABS    340  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+SPI1_DR                               5204         no  WORD  Internal   ABS    342  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+SPI1_CRCPR                            5205         no  WORD  Internal   ABS    344  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+SPI1_RXCRCR                           5206         no  WORD  Internal   ABS    346  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+SPI1_TXCRCR                           5207         no  WORD  Internal   ABS    348  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+
+TIM2_CR1                              5250         no  WORD  Internal   ABS    411  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+TIM2_CR2                              5251         no  WORD  Internal   ABS    413  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+TIM2_SMCR                             5252         no  WORD  Internal   ABS    415  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+TIM2_ETR                              5253         no  WORD  Internal   ABS    417  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+TIM2_DER                              5254         no  WORD  Internal   ABS    419  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+TIM2_IER                              5255         no  WORD  Internal   ABS    421  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+TIM2_SR1                              5256         no  WORD  Internal   ABS    423  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+TIM2_SR2                              5257         no  WORD  Internal   ABS    425  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+TIM2_EGR                              5258         no  WORD  Internal   ABS    427  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+TIM2_CCMR1                            5259         no  WORD  Internal   ABS    429  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+TIM2_CCMR2                            525A         no  WORD  Internal   ABS    431  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+TIM2_CCER1                            525B         no  WORD  Internal   ABS    433  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+TIM2_CNTRH                            525C         no  WORD  Internal   ABS    435  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+STMicroelectronics list file postprocessor v1.01   (C)2009-2023   Sat Aug 12 20:15:58 2023
+Page 25  Assembler
+                                               c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\isr.asm
+
+TIM2_CNTRL                            525D         no  WORD  Internal   ABS    437  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+TIM2_PSCR                             525E         no  WORD  Internal   ABS    439  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+TIM2_ARRH                             525F         no  WORD  Internal   ABS    441  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+TIM2_ARRL                             5260         no  WORD  Internal   ABS    443  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+TIM2_CCR1H                            5261         no  WORD  Internal   ABS    445  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+TIM2_CCR1L                            5262         no  WORD  Internal   ABS    447  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+TIM2_CCR2H                            5263         no  WORD  Internal   ABS    449  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+TIM2_CCR2L                            5264         no  WORD  Internal   ABS    451  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+TIM2_BKR                              5265         no  WORD  Internal   ABS    453  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+TIM2_OISR                             5266         no  WORD  Internal   ABS    455  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+TIM3_CR1                              5280         no  WORD  Internal   ABS    460  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+TIM3_CR2                              5281         no  WORD  Internal   ABS    462  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+TIM3_SMCR                             5282         no  WORD  Internal   ABS    464  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+TIM3_ETR                              5283         no  WORD  Internal   ABS    466  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+TIM3_DER                              5284         no  WORD  Internal   ABS    468  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+TIM3_IER                              5285         no  WORD  Internal   ABS    470  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+TIM3_SR1                              5286         no  WORD  Internal   ABS    472  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+TIM3_SR2                              5287         no  WORD  Internal   ABS    474  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+TIM3_EGR                              5288         no  WORD  Internal   ABS    476  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+TIM3_CCMR1                            5289         no  WORD  Internal   ABS    478  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+TIM3_CCMR2                            528A         no  WORD  Internal   ABS    480  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+TIM3_CCER1                            528B         no  WORD  Internal   ABS    482  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+TIM3_CNTRH                            528C         no  WORD  Internal   ABS    484  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+TIM3_CNTRL                            528D         no  WORD  Internal   ABS    486  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+TIM3_PSCR                             528E         no  WORD  Internal   ABS    488  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+TIM3_ARRH                             528F         no  WORD  Internal   ABS    490  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+TIM3_ARRL                             5290         no  WORD  Internal   ABS    492  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+TIM3_CCR1H                            5291         no  WORD  Internal   ABS    494  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+TIM3_CCR1L                            5292         no  WORD  Internal   ABS    496  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+TIM3_CCR2H                            5293         no  WORD  Internal   ABS    498  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+TIM3_CCR2L                            5294         no  WORD  Internal   ABS    500  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+TIM3_BKR                              5295         no  WORD  Internal   ABS    502  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+TIM3_OISR                             5296         no  WORD  Internal   ABS    504  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+TIM4_CR1                              52E0         no  WORD  Internal   ABS    509  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+TIM4_CR2                              52E1         no  WORD  Internal   ABS    511  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+TIM4_SMCR                             52E2         no  WORD  Internal   ABS    513  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+TIM4_DER                              52E3         no  WORD  Internal   ABS    515  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+TIM4_IER                              52E4         no  WORD  Internal   ABS    517  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+TIM4_SR1                              52E5         no  WORD  Internal   ABS    519  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+TIM4_EGR                              52E6         no  WORD  Internal   ABS    521  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+TIM4_CNTR                             52E7         no  WORD  Internal   ABS    523  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+TIM4_PSCR                             52E8         no  WORD  Internal   ABS    525  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+TIM4_ARR                              52E9         no  WORD  Internal   ABS    527  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+
+USART1_SR                             5230         no  WORD  Internal   ABS    386  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+USART1_DR                             5231         no  WORD  Internal   ABS    388  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+USART1_BRR1                           5232         no  WORD  Internal   ABS    390  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+USART1_BRR2                           5233         no  WORD  Internal   ABS    392  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+USART1_CR1                            5234         no  WORD  Internal   ABS    394  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+USART1_CR2                            5235         no  WORD  Internal   ABS    396  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+USART1_CR3                            5236         no  WORD  Internal   ABS    398  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+USART1_CR4                            5237         no  WORD  Internal   ABS    400  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+USART1_CR5                            5238         no  WORD  Internal   ABS    402  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+USART1_GTR                            5239         no  WORD  Internal   ABS    404  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+USART1_PSCR                           523A         no  WORD  Internal   ABS    406  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+UIF                                   0000         no  WORD  Internal   ABS     46  private  text         0     0  -
+
+STMicroelectronics list file postprocessor v1.01   (C)2009-2023   Sat Aug 12 20:15:58 2023
+Page 26  Assembler
+                                               c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\isr.asm
+
+WFE_CR1                               50A6         no  WORD  Internal   ABS    170  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+WFE_CR2                               50A7         no  WORD  Internal   ABS    172  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+WFE_CR3                               50A8         no  WORD  Internal   ABS    174  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+WFE_CR4                               50A9         no  WORD  Internal   ABS    176  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+WWDG_CR                               50D3         no  WORD  Internal   ABS    239  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+WWDG_WR                               50D4         no  WORD  Internal   ABS    241  private  text         0     0  c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\stm8l051f3.inc
+WUTWF                                 0002         no  WORD  Internal   ABS     47  private  text         0     0  -
+
+amm_inc_rpt                           85D6         no  WORD  Internal   ABS    135  private  text        18     0  -
+ahh_inc_rpt                           85F1         no  WORD  Internal   ABS    151  private  text        18     0  -
+amm_dec_rpt                           86B6         no  WORD  Internal   ABS    245  private  text        18     0  -
+ahh_dec_rpt                           86C8         no  WORD  Internal   ABS    254  private  text        18     0  -
+
+byte1                                 000C         no  WORD  Internal   ABS      9  private  text         0     0  -
+byte2                                 000D         no  WORD  Internal   ABS     10  private  text         0     0  -
+
+clbr_inc_rpt                          8603         no  WORD  Internal   ABS    160  private  text        10     0  -
+clbr_dec_rpt                          86DF         no  WORD  Internal   ABS    268  private  text        10     0  -
+cfg_repeat                            8722         no  WORD  Internal   ABS    300  private  text        17     0  -
+cfg_debounce                          8733         no  WORD  Internal   ABS    307  private  text        17     0  -
+
+date                                  001F         no  WORD  Internal   ABS     14  private  text         0     0  -
+dec_mm                                919B         no  WORD  Internal   ABS     18  private  text         0     0  -
+dec_hh                                920E         no  WORD  Internal   ABS     20  private  text         0     0  -
+dec_mt                                928A         no  WORD  Internal   ABS     22  private  text         0     0  -
+dec_dd                                9312         no  WORD  Internal   ABS     24  private  text         0     0  -
+dec_wd                                9394         no  WORD  Internal   ABS     26  private  text         0     0  -
+dec_yyyy                              9404         no  WORD  Internal   ABS     28  private  text         0     0  -
+dec_amm                               9474         no  WORD  Internal   ABS     30  private  text         0     0  -
+dec_ahh                               94F0         no  WORD  Internal   ABS     32  private  text         0     0  -
+dec_clbr                              95DC         no  WORD  Internal   ABS     41  private  text         0     0  -
+dd_inc_rpt                            85A7         no  WORD  Internal   ABS    113  private  text        15     0  -
+dd_dec_rpt                            8687         no  WORD  Internal   ABS    223  private  text        15     0  -
+debounce                              8711         no  WORD  Internal   ABS    292  private  text         7     0  -
+dbn_wait_CEN                          8718         no  WORD  Internal   ABS    295  private  text        10     0  -
+
+hours                                 001E         no  WORD  Internal   ABS     12  private  text         0     0  -
+hh_inc_rpt                            8586         no  WORD  Internal   ABS     97  private  text        15     0  -
+hh_dec_rpt                            8666         no  WORD  Internal   ABS    207  private  text        15     0  -
+
+inc_mm                                9167         no  WORD  Internal   ABS     17  private  text         0     0  -
+inc_hh                                91D7         no  WORD  Internal   ABS     19  private  text         0     0  -
+inc_mt                                924A         no  WORD  Internal   ABS     21  private  text         0     0  -
+inc_dd                                92D3         no  WORD  Internal   ABS     23  private  text         0     0  -
+inc_wd                                9353         no  WORD  Internal   ABS     25  private  text         0     0  -
+inc_yyyy                              93D5         no  WORD  Internal   ABS     27  private  text         0     0  -
+inc_amm                               943B         no  WORD  Internal   ABS     29  private  text         0     0  -
+inc_ahh                               94B7         no  WORD  Internal   ABS     31  private  text         0     0  -
+inc_clbr                              9572         no  WORD  Internal   ABS     40  private  text         0     0  -
+
+key1flag                              0024         no  WORD  Internal   ABS      5  private  text         0     0  -
+key2flag                              0025         no  WORD  Internal   ABS      6  private  text         0     0  -
+key3flag                              0026         no  WORD  Internal   ABS      7  private  text         0     0  -
+key4flag                              0027         no  WORD  Internal   ABS      8  private  text         0     0  -
+key1_handler                      00008531  interrupt  LONG  Internal   ABS     59  public   text        29     0  -
+key1_repeat                           854E         no  WORD  Internal   ABS     69  private  text        41     0  -
+key1_repeat2                          85E8         no  WORD  Internal   ABS    144  private  text         9     0  -
+STMicroelectronics list file postprocessor v1.01   (C)2009-2023   Sat Aug 12 20:15:58 2023
+Page 27  Assembler
+                                               c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\isr.asm
+
+key2_handler                      0000860D  interrupt  LONG  Internal   ABS    167  public   text        29     0  -
+key2_repeat                           862A         no  WORD  Internal   ABS    177  private  text        45     0  -
+key2_repeat2                          86DA         no  WORD  Internal   ABS    263  private  text         5     0  -
+key3_handler                      000086E9  interrupt  LONG  Internal   ABS    275  public   text        20     0  -
+key4_handler                      000086FD  interrupt  LONG  Internal   ABS    284  public   text        20     0  -
+
+mode                                  0022         no  WORD  Internal   ABS      3  private  text         0     0  -
+minutes                               001D         no  WORD  Internal   ABS     11  private  text         0     0  -
+monthweekd                            0020         no  WORD  Internal   ABS     13  private  text         0     0  -
+mm_inc_rpt                            8577         no  WORD  Internal   ABS     90  private  text        15     0  -
+mt_inc_rpt                            8595         no  WORD  Internal   ABS    104  private  text        18     0  -
+mm_dec_rpt                            8657         no  WORD  Internal   ABS    200  private  text        15     0  -
+mt_dec_rpt                            8675         no  WORD  Internal   ABS    214  private  text        18     0  -
+
+restore_periph                        90F1         no  WORD  Internal   ABS     38  private  text         0     0  -
+rpt_wait_CEN                          8748         no  WORD  Internal   ABS    316  private  text        10     0  -
+
+show_first                            89CB         no  WORD  Internal   ABS     34  private  text         0     0  -
+show_last                             899F         no  WORD  Internal   ABS     35  private  text         0     0  -
+show_wdstring                         89F7         no  WORD  Internal   ABS     36  private  text         0     0  -
+show_clbr_val                         88D8         no  WORD  Internal   ABS     42  private  text         0     0  -
+strt_tmr                              8744         no  WORD  Internal   ABS    314  private  text         4     0  -
+
+timerflag                             0028         no  WORD  Internal   ABS      4  private  text         0     0  -
+tim2_handler                      00008528  interrupt  LONG  Internal   ABS     53  public   text         9     0  -
+
+wd_inc_rpt                            85B6         no  WORD  Internal   ABS    120  private  text        10     0  -
+wd_dec_rpt                            8696         no  WORD  Internal   ABS    230  private  text        10     0  -
+
+year                                  0021         no  WORD  Internal   ABS     15  private  text         0     0  -
+yyyy_inc_rpt                          85C0         no  WORD  Internal   ABS    126  private  text        22     0  -
+yyyy_dec_rpt                          86A0         no  WORD  Internal   ABS    236  private  text        22     0  -
+
+
+347 labels
+No errors on assembly of 'c:\program files (x86)\stmicroelectronics\st_toolset\stvd\watch\isr.asm'

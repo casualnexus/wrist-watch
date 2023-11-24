@@ -1,0 +1,14 @@
+mapping.asm
+power.asm
+alarm.asm
+beeper.asm
+isr.asm
+functions.asm
+display.asm
+init.asm
+irq.asm
+main.asm
+procedures.asm
+stm8l051f3.asm
+mapping.inc
+stm8l051f3.inc
